@@ -1,0 +1,27 @@
+{%extends "base1.html"%}
+
+{% block content %}
+			{% for building in buildings %}
+			  <div class="building">
+			    <h2 style="color: honeydew;">Building : {{ building.name }}</h2>
+			    <p style="color: lightseagreen;">Address: {{ building.address }}</p>
+			    <p style="color: lightseagreen;">Description: {{ building.description }}</p>
+			   {% with health_status=building.buildinghealthstatus_set.first %}
+			      <div class="status-bar">
+			        <div class="status-bar-inner" style="width: {{ health_status.health_status }}%; background-color: {{ health_status.health_status_color }};"></div>
+			        <div class="status-bar-label" style="color: darkblue;">status-bar : {{ health_status.health_status }}%</div>
+			      </div>
+			    {% endwith %}
+			    <ul>
+						<li><a href="{% url 'building_edit' building.pk %}" style="color: blue;">Edit</a></li>
+						<li><a href="{% url 'building_delete' building.pk %}" style="color: blue;">Delete</a></li>
+						<li><a href="{% url 'report_incident'%}" style="color: blue;">Report an Incident</li>
+					</ul>
+
+			  </div>
+			{% endfor %}
+				<li><a href="{% url 'add_building' %}" style="color: deeppink; font-style: italic;">Add New Building</a></li>
+				<li><a href="{% url 'list_incidents' %}" style="color: deeppink;font-style: italic;">View All Incidents</a></li>
+				<li><a href="{% url 'intervention_list' %}" style="color: deeppink;font-style: italic;">View Interventions</a></li>
+
+			{% endblock %}

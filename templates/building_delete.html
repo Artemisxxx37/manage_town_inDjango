@@ -1,0 +1,14 @@
+{% extends "base1.html"%} 
+{% block content%}
+    <h1 style="color: blue;">Delete Building ?</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <p style="color: crimson;">Are you sure you want to delete this building?</p>
+        <button type="submit" style="color: white;background-color:red">Delete</button>
+        <i><a href=" {% url 'dashboard' %}"style="color:deeppink;"> go back</a></i>
+
+    </form>
+    
+
+{%endblock%}

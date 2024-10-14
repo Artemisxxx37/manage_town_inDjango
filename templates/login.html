@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 style="color: blue;">Login</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"style="color: white; background-color: green;">Login</button>
+    <a href="{% url 'signup' %}" style="color: deeppink ; font:bolder;">Haven't account yet? go register</a>
+    <style>
+
+      label {
+
+      color: white;
+
+    }
+
+  </style>
+  </form>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1  style="color: dodgerblue;">User Registration Form</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+   {% if error %}
+      <p style="color: red">{{ error }}</p>
+    {% endif %}
+    <button type="submit" style="color: white; background-color:green">Register</button>
+    <a href="{% url 'login' %}" style="color: deeppink;">Already registered?login instead</a> 
+    <style>
+
+      label {
+
+      color: white;
+
+    }
+
+  </style> 
+  </form>
+
+{% endblock %}

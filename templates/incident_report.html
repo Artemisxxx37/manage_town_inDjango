@@ -1,0 +1,17 @@
+{%extends "base1.html"%}
+        {% block content %}
+    <h1 style="color: lightblue;">Report an Incident</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="color: white; background-color: green;">Submit</button>
+        <a href="{% url 'dashboard' %}" style="color: deeppink;">go back</a>
+        <a href="{% url 'list_incidents' %}" style="color: deeppink;">View All Incidents</a>
+
+        <style >
+            label{
+                color: white;
+            }
+        </style>
+    </form>
+{% endblock %}

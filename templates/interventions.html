@@ -1,0 +1,27 @@
+{%extends "base1.html" %}
+
+
+{% block content %}
+  <h1 style="color: mediumblue;">Interventions</h1>
+  <ul>
+      {% for intervention in interventions %}
+      <li><p style="color: lightblue;">Building Name: {{ intervention.building.name }}</p></li>
+      <div class="interventions">
+        <ul>
+          <li><p  style="color: lightseagreen;">Intervention type : {{ intervention.intervention_type }} </p></li>
+            <li><p style="color: lightblue;">{{ intervention.intervention_date }}</p></li>
+            <li><p style="color: lightblue;">{{ intervention.intervention_notes }}</p></li>
+            <li>
+
+              <a href="{% url 'delete_intervention' intervention.id %}" style="color: red;">Remove</a>
+
+              <a href="{% url 'mark_as_done' intervention.id %}" style="color: green;">Mark as Done</a>
+
+            </li>
+        </ul>
+      </div>
+     
+      {% endfor %}
+    <li><a href="{% url 'create_intervention'%}" style="color: deeppink;">Make Intervention</a>
+    <li><a href="{% url 'list_incidents' %}" style="color: deeppink;">go back</a></li>
+{% endblock %}

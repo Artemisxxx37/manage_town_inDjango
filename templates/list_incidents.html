@@ -1,0 +1,40 @@
+{%extends "base1.html"%}
+
+
+{% block content %}
+<h1 style="color: white;">List of Incidents</h1>
+<table>
+    <thead>
+        <tr style="color: blue;">
+               <th>Title</th>
+            <th>Description</th>
+            <th>Date Occurred</th>
+            <th>Location</th>
+            <th>Reported By</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody style="color: lightcyan;">
+        {% for incident in incidents %}
+        <tr>
+            <td>{{ incident.title }}</td>
+            <td>{{ incident.description }}</td>
+            <td>{{ incident.date_occurred }}</td>
+            <td>{{ incident.location }}</td>
+            <td>{{ incident.reported_by.username }}</td>
+            <td>{{ incident.created_at }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="6">No incidents reported.</td>
+        </tr>
+        {% endfor %}
+</table>
+<li><a href="{% url 'create_intervention'%}" style="color: deeppink;">Make Intervention</a></li>
+    <li><a href="{% url 'intervention_list' %}" style="color: deeppink;">View Interventions</a></li>
+    <li><a href="{% url 'dashboard' %}" style="color: deeppink;"> go back to dashboard</a></li>
+
+{% endblock %}
+
+
+    

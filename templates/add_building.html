@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Flyorex-S0l
+      {% endblock %}
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"  rel="stylesheet" />
+    <style>
+      body{
+        background-color: #132e44;
+     }
+     /* styles.css */
+    .health-status-bar {
+      height: 20px;
+      background-color: #ccc;
+      border-radius: 10px;
+      padding: 2px;
+    }
+
+    .health-status-bar-inner {
+      height: 100%;
+      background-color: #4CAF50; /* green color */
+      border-radius: 10px;
+      transition: width 0.5s ease-in-out;
+    }
+     </style>
+
+  </head>
+  <body>
+  <header class="p-3 bg-dark text-white">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="#"class="navbar-brand" href="#"><b><i>Buildings Management-System</i></b></a></li>
+          <li><a href="#" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="#" class="nav-link px-2 text-secondary">Contact</a></li>
+          <li><a href="#" class="nav-link px-2 text-secondary">FAQs</a></li>
+          <li><a href="#" class="nav-link px-2 text-secondary">About</a></li>
+        </ul>
+          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+          <input type="search"  placeholder="Search..." aria-label="Search">
+        </form>
+
+        <div class="text-end">
+          <a  href="{% url 'administrator' %}"type="button" class="btn btn-outline-light me-2" >administration</a>
+          <a  href= "{% url 'logout' %} "type="button" class="btn btn-warning" >LogOut</a>
+        </div>
+      </div>
+    </div>
+  </header>
+  <h2>
+    <div class="frame" style="color: white; text-align: center;">
+      <h1 class="bi bi-building" >Public Buildings - Management </h1>
+    </div>
+  </h2>
+    <div class="container">
+
+        {% block content %}
+        <h2 style="color: blue;">Add New Building</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" style="color: white;background-color:green">Add Building</button>
+            <a href="{% url 'dashboard' %}"style="color: deeppink;">go back to dashboard</a>
+            <style>
+
+              label {
+        
+              color: white;
+        
+            }
+        
+          </style>
+        </form>
+
+        {% endblock %}
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" ></script>
+  </body>
+</html>
+

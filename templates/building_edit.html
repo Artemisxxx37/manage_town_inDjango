@@ -1,0 +1,27 @@
+{% extends "base1.html"%} 
+
+{% block content %}
+    <h1 style="color: blue;">Edit Building</h1>
+
+
+    <form method="post">
+
+        {% csrf_token %}
+
+        {{ form.as_p }}
+
+        <button type="submit" style="color: white;background-color:green;font-style: italic;">Save Changes</button>
+        <i><a href=" {% url 'dashboard' %}" style="color: deeppink;font-style: italic;"> go back</a></i>
+        <style>
+
+            label {
+      
+            color: white;
+      
+          }
+      
+        </style>
+    </form>
+    
+
+{% endblock%}
